@@ -1,0 +1,82 @@
+ # Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg
+*.egg-info/
+dist/
+build/
+*.eggs
+.wheel
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3
+staticfiles/
+
+# Environment variables
+.env
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Logs
+*.log
+*.out
+*.err
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backup files
+*.bak
+
+# Compiled source files
+*.obj
+*.dll
+*.pdb
+
+# Packages
+*.gem
+*.jar
+*.war
+
+# Test binary, build results
+*.test
+*.o
+*.pyc
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
