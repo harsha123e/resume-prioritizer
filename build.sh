@@ -2,11 +2,11 @@
 set -e
 
 echo "Installing dependencies..."
-python3.12 -m pip install --upgrade pip
+python3.9 -m pip install --upgrade pip
 pip install -r requirements.txt
 
 echo "Running migrations..."
-python3.12 manage.py migrate
+python3.9 manage.py migrate
 
 echo "Collecting static files..."
-python3.12 manage.py collectstatic --noinput
+python3.9 manage.py collectstatic --noinput
