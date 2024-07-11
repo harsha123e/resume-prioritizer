@@ -8,6 +8,9 @@ from io import BytesIO
 import os
 import zipfile
 from django.http import HttpResponse, HttpResponseBadRequest
+import os
+import base64
+from django.conf import settings
 
 
 nltk.download('punkt')
@@ -125,3 +128,23 @@ def calculate_similarity(job_description, resume_data):
     scores = similarities.flatten()
 
     return scores.tolist()
+
+def load_demo_data():
+    # Path to demo data
+    demo_data_path = os.path.join(settings.STATIC_ROOT, 'demo-data')
+
+    # Load job description
+    with open(os.path.join(demo_data_path, 'job_description.txt'), 'r') as file:
+        job_description = file.read()
+
+    # Load resumes
+    resume_files = []
+    for filename in os.listdir(demo_data_path):
+        if filename.endswith('.pdf'):
+            with open(os.path.join(demo_data_path, filename), 'rb') as file:
+                resume_files.append({
+                    'filename': filename,
+                    'content': base64.b64encode(file.read()).decode('utf-8'),
+                })
+
+    return {'job_description': job_description, 'resume_files': resume_files}
