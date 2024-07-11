@@ -33,8 +33,7 @@
 
 header,
 footer {
-  background-color: #8e44ad; /* Adjust the header and footer background color */
-  /* background-color: black; */
+  background-color: #8e44ad; 
 }
 
 .header-title {
