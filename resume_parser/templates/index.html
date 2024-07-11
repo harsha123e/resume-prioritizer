@@ -130,6 +130,7 @@
           </div>
           <div class="modal-body">
             <form id="uploadForm">
+              {% csrf_token %}
               <div class="form-group">
                 <label for="jobDescription">Job Description</label>
                 <textarea

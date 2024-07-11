@@ -26,8 +26,16 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("resumeFolder", resumeFiles[i]);
     }
 
+    // Retrieve CSRF token from the form
+    var csrfToken = document.querySelector(
+      'input[name="csrfmiddlewaretoken"]'
+    ).value;
+
     fetch("/upload/", {
       method: "POST",
+      headers: {
+        "X-CSRFToken": csrfToken, // Include CSRF token in headers
+      },
       body: formData,
     })
       .then((response) => {
