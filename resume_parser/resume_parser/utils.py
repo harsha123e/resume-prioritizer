@@ -24,9 +24,15 @@ def process_resumes(job_description, resume_files):
     Returns:
     - HttpResponse: Response object containing the zip file for download.
     """
+    zip_filename = 'ranked_resumes.zip'
     try:
-        job_description = preprocess_text(job_description)
-        
+        # Write job description to a temporary text file
+        job_description_filename = 'job_description.txt'
+        with open(job_description_filename, 'w', encoding='utf-8') as job_desc_file:
+            job_desc_file.write(job_description)
+
+        job_description_preprocessed = preprocess_text(job_description)
+
         # Prepare data structure to store resume content and original file names
         resume_data = []
         resume_file_contents = {}  # Dictionary to store file content
@@ -49,7 +55,7 @@ def process_resumes(job_description, resume_files):
                 })
 
         # Calculate similarity scores
-        scores = calculate_similarity(job_description, resume_data)
+        scores = calculate_similarity(job_description_preprocessed, resume_data)
 
         # Combine resume data with scores
         for resume, score in zip(resume_data, scores):
@@ -58,9 +64,12 @@ def process_resumes(job_description, resume_files):
         # Sort resumes by score in descending order
         resume_data.sort(key=lambda x: x['score'], reverse=True)
 
-        # Rename and zip resumes based on ranking
-        zip_filename = 'ranked_resumes.zip'
+        # Prepare zip file with ranked resumes and job description
         with zipfile.ZipFile(zip_filename, 'w') as zipf:
+            # Add job description text file to the zip
+            zipf.write(job_description_filename, os.path.basename(job_description_filename))
+            
+            # Add ranked resumes to the zip
             for idx, resume in enumerate(resume_data):
                 original_filename = resume['filename']
                 ranked_filename = f"{idx + 1} {original_filename}"
@@ -77,9 +86,10 @@ def process_resumes(job_description, resume_files):
         response = HttpResponseBadRequest("Error processing resumes")
 
     finally:
-        # Clean up - delete the zip file from the server
+        # Clean up - delete the temporary files from the server
         try:
             os.remove(zip_filename)
+            os.remove(job_description_filename)
         except Exception as e:
             print(f"Error cleaning up: {str(e)}")
 
