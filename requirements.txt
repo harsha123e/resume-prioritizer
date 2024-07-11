@@ -1,1 +1,3 @@
 django
+tika
+scikit-learn

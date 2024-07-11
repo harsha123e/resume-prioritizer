@@ -1,18 +1,31 @@
-document.getElementById("uploadBtn").addEventListener("click", function () {
-  var uploadBtn = document.getElementById("uploadBtn");
-  uploadBtn.textContent = "Processing...";
+document.addEventListener("DOMContentLoaded", function () {
+  const uploadBtn = document.getElementById("uploadBtn");
+  const jobDescription = document.getElementById("jobDescription");
+  const resumeFolder = document.getElementById("resumeFolder");
 
-  var jobDescription = document.getElementById("jobDescription").value;
-  var resumeFolder = document.getElementById("resumeFolder").files;
-
-  var formData = new FormData();
-  formData.append("jobDescription", jobDescription);
-  for (var i = 0; i < resumeFolder.length; i++) {
-    formData.append("resumeFolder", resumeFolder[i]);
+  function validateForm() {
+    if (jobDescription.value.trim() !== "" && resumeFolder.files.length > 0) {
+      uploadBtn.disabled = false;
+    } else {
+      uploadBtn.disabled = true;
+    }
   }
 
-  // Add a delay of 3 seconds before proceeding with the fetch request
-  setTimeout(function () {
+  jobDescription.addEventListener("input", validateForm);
+  resumeFolder.addEventListener("change", validateForm);
+
+  document.getElementById("uploadBtn").addEventListener("click", function () {
+    uploadBtn.textContent = "Processing...";
+
+    var jobDescriptionValue = jobDescription.value;
+    var resumeFiles = resumeFolder.files;
+
+    var formData = new FormData();
+    formData.append("jobDescription", jobDescriptionValue);
+    for (var i = 0; i < resumeFiles.length; i++) {
+      formData.append("resumeFolder", resumeFiles[i]);
+    }
+
     fetch("/upload/", {
       method: "POST",
       body: formData,
@@ -39,25 +52,25 @@ document.getElementById("uploadBtn").addEventListener("click", function () {
         console.error("Error:", error);
         uploadBtn.textContent = "Upload";
       });
-  }, 3000); // 3-second delay
-});
+  });
 
-// Event handler for when the modal is closed
-$("#uploadModal").on("hidden.bs.modal", function () {
-  // Clear the job description text area
-  document.getElementById("jobDescription").value = "";
+  // Event handler for when the modal is closed
+  $("#uploadModal").on("hidden.bs.modal", function () {
+    // Clear the job description text area
+    jobDescription.value = "";
 
-  // Clear the file input
-  document.getElementById("resumeFolder").value = "";
+    // Clear the file input
+    resumeFolder.value = "";
 
-  // Reset the upload button text and visibility
-  var uploadBtn = document.getElementById("uploadBtn");
-  uploadBtn.style.display = "block";
-  uploadBtn.textContent = "Upload";
+    // Reset the upload button text and visibility
+    uploadBtn.style.display = "block";
+    uploadBtn.textContent = "Upload";
+    uploadBtn.disabled = true;
 
-  // Remove the download button if it exists
-  var downloadButton = document.querySelector(".modal-footer a");
-  if (downloadButton) {
-    downloadButton.remove();
-  }
+    // Remove the download button if it exists
+    var downloadButton = document.querySelector(".modal-footer a");
+    if (downloadButton) {
+      downloadButton.remove();
+    }
+  });
 });
