@@ -1,64 +1,56 @@
 * {
-    font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background-color: #f8f9fa; /* Change to your desired hover background color */
+}
+
+.card-body {
+  flex-grow: 1;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-text {
+  font-size: 0.875rem; /* Adjust as needed */
+  color: #6c757d; /* Adjust text color */
+}
+
+header,
+footer {
+  background-color: #9b59b6; /* Adjust the header and footer background color */
+}
+
+.header-title {
+  font-size: 2rem;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+.footer-shadow {
+    box-shadow: 0 -5px 15px rgba(93, 92, 92, 0.3); /* Shadow for the top of the footer */
   }
-  
-  .card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    border: none;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    background-color: #f8f9fa; /* Change to your desired hover background color */
-  }
-  
-  .card-body {
-    flex-grow: 1;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .card-text {
-    font-size: 0.875rem; /* Adjust as needed */
-    color: #6c757d; /* Adjust text color */
-  }
-  
-  header,
-  footer {
-    background-color: #9b59b6; /* Adjust the header and footer background color */
-  }
-  
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-  
-  .header-title {
-    font-size: 2rem;
-  }
-  
-  main {
-    flex: 1;
-  }
-  
-  footer {
-    flex-shrink: 0;
-  }
-  
-  /* Ensure cards have equal height */
-  .card {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  @media (min-width: 992px) {
-    .row.align-items-stretch {
-      display: flex;
-    }
-  }
-  
