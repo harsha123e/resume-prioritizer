@@ -100,7 +100,7 @@ def extract_pdf_text(pdf_file):
     return raw['content']
 
 def preprocess_text(text):
-    # Example preprocessing steps (you can modify or add more steps as needed)
+    # Preprocessing steps
     cleaned_text = text.lower().replace('\n', '')  # Convert to lowercase and remove new lines
     tokens = word_tokenize(cleaned_text)  # Tokenize text into words
     stop_words = set(stopwords.words('english'))

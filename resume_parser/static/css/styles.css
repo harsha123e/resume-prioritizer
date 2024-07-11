@@ -12,7 +12,7 @@
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  background-color: #f8f9fa; /* Change to your desired hover background color */
+  background-color: #f8f9fa;
 }
 
 .card-body {
@@ -23,8 +23,8 @@
 }
 
 .card-text {
-  font-size: 1.25rem; /* Adjust as needed */
-  color: #6c757d; /* Adjust text color */
+  font-size: 1.25rem;
+  color: #6c757d;
 }
 
 .upload-button {
