@@ -5,7 +5,6 @@
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
-  border: none;
   display: flex;
   flex-direction: column;
 }
@@ -24,17 +23,22 @@
 }
 
 .card-text {
-  font-size: 0.875rem; /* Adjust as needed */
+  font-size: 1.25rem; /* Adjust as needed */
   color: #6c757d; /* Adjust text color */
+}
+
+.upload-button {
+  font-size: 1.25rem;
 }
 
 header,
 footer {
-  background-color: #9b59b6; /* Adjust the header and footer background color */
+  /* background-color: #9b59b6; Adjust the header and footer background color */
+  background-color: black;
 }
 
 .header-title {
-  font-size: 2rem;
+  font-size: 1.75rem;
 }
 
 body {
@@ -52,5 +56,5 @@ footer {
 }
 
 .footer-shadow {
-    box-shadow: 0 -5px 15px rgba(93, 92, 92, 0.3); /* Shadow for the top of the footer */
-  }
+  box-shadow: 0 -5px 15px rgba(93, 92, 92, 0.3); /* Shadow for the top of the footer */
+}

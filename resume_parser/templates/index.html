@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resume Prioritizer</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <link
       rel="shortcut icon"
       href="{% static 'favicons/favicon-16x16.ico' %}"
@@ -29,9 +28,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
   <body>
-    <header class="text-white py-1 shadow">
+    <header class="text-white py-2 shadow">
       <h1 class="ml-4 mb-1 header-title">Resume Prioritizer</h1>
     </header>
 
@@ -82,7 +82,7 @@
 
         <div class="text-center">
           <button
-            class="btn btn-primary mt-auto"
+            class="btn btn-primary mt-auto  upload-button"
             data-toggle="modal"
             data-target="#uploadModal"
           >
