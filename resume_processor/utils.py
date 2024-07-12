@@ -131,7 +131,7 @@ def calculate_similarity(job_description, resume_data):
 
 def load_demo_data():
     # Path to demo data
-    demo_data_path = os.path.join(settings.STATIC_ROOT, 'demo-data')
+    demo_data_path = os.path.join(settings.BASE_DIR, 'resume_processor', 'static', 'demo-data')
 
     # Load job description
     with open(os.path.join(demo_data_path, 'job_description.txt'), 'r') as file:

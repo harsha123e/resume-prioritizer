@@ -6,7 +6,7 @@ from .utils import process_resumes, load_demo_data
 from django.http import JsonResponse
 
 def index_view(request):
-    return render(request, 'index.html')
+    return render(request, 'home.html')
 
 @require_POST
 def upload_view(request):
