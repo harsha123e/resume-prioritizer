@@ -32,9 +32,11 @@ The resume prioritizer application aims to significantly reduce manual effort, i
 Note: Demo video attached in repository.
 
 **Pre-Requistics**
+
 Python 3 should be installed
 
 **How to run this project locally**
+
 The below code will help you run the code in your local computer.
 
 Create a folder and run the following commands in CMD/terminal to run the project locally.
@@ -51,6 +53,7 @@ python manage.py runserver
 Ctrl + Click on the link provided in CMD/terminal to open the application.
 
 **Understanding the above commands**
+
 git clone https://github.com/harsha123e/resume-prioritizer.git -> Create a clone/copy of the project locally
 
 cd resume-prioritizer -> Change to project's directory
