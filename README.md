@@ -25,12 +25,9 @@ The resume prioritizer application aims to significantly reduce manual effort, i
 **Project Demo**
 ## Watch the Demo
 
-<iframe width="560" height="315" src="/video.webm" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Watch the video here](/demo_thumbnail.png)](/video_demo.gif)
 
-## Watch the Demo
-
-[![Watch the video here](/demo_thumbnail.png)](/video.webm)
-
+![Video Demo GIF](/video_demo.gif)
 
 Note: Demo video attached in repository.
 
