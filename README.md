@@ -54,17 +54,17 @@ Ctrl + Click on the link provided in CMD/terminal to open the application.
 
 **Understanding the above commands**
 
-git clone https://github.com/harsha123e/resume-prioritizer.git -> Create a clone/copy of the project locally
+`git clone https://github.com/harsha123e/resume-prioritizer.git` -> Create a clone/copy of the project locally
 
-cd resume-prioritizer -> Change to project's directory
+`cd resume-prioritizer` -> Change to project's directory
 
-python -m venv venv -> Create a virtual environment
+`python -m venv venv` -> Create a virtual environment
 
-venv\Scripts\activate -> Activate the virtual environment
+`venv\Scripts\activate` -> Activate the virtual environment
 
-pip install -r requirements.txt -> Install the needed dependencies/packages to run the project
+`pip install -r requirements.txt` -> Install the needed dependencies/packages to run the project
 
-python manage.py runserver -> Start the Django server to run the project locally
+`python manage.py runserver` -> Start the Django server to run the project locally
 
 **Understanding folder structure**
 ```
