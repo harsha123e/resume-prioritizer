@@ -1,16 +1,41 @@
 from tika import parser
-import spacy
+from textblob import TextBlob
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from io import BytesIO
-import zipfile
 import os
-import base64
+import zipfile
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.conf import settings
+import base64
 
-# Load spaCy English model
-nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
+def preprocess_text(text):
+    # Basic preprocessing using TextBlob for tokenization and stopword removal
+    cleaned_text = text.lower().replace('\n', '')
+    words = TextBlob(cleaned_text).words
+    filtered_words = [word for word in words if len(word) > 1]  # Remove single character words
+    return " ".join(filtered_words)
+
+def calculate_similarity(job_description, resume_data):
+    # Extract all texts
+    all_texts = [job_description] + [resume['content'] for resume in resume_data]
+
+    # Calculate TF-IDF vectors using sklearn
+    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_vectors = tfidf_vectorizer.fit_transform(all_texts)
+
+    # Calculate cosine similarity using sklearn
+    job_description_vector = tfidf_vectors[0]
+    resume_vectors = tfidf_vectors[1:]
+
+    similarities = cosine_similarity(job_description_vector, resume_vectors)
+    scores = similarities.flatten()
+
+    return scores.tolist()
+
+def extract_pdf_text(pdf_file):
+    raw = parser.from_buffer(pdf_file)
+    return raw.get('content', '')
 
 def process_resumes(job_description, resume_files):
     """
@@ -61,7 +86,7 @@ def process_resumes(job_description, resume_files):
         zip_buffer = BytesIO()
         with zipfile.ZipFile(zip_buffer, 'w') as zipf:
             # Add job description text file to the zip
-            zipf.writestr('job_description.txt', job_description.encode('utf-8'))
+            zipf.writestr('job_description.txt', job_description)
             # Add ranked resumes to the zip
             for idx, resume in enumerate(resume_data):
                 original_filename = resume['filename']
@@ -70,7 +95,7 @@ def process_resumes(job_description, resume_files):
 
         # Serve the zip file as a download response
         zip_buffer.seek(0)
-        response = HttpResponse(zip_buffer.getvalue(), content_type='application/zip')
+        response = HttpResponse(zip_buffer, content_type='application/zip')
         response['Content-Disposition'] = 'attachment; filename="ranked_resumes.zip"'
 
     except Exception as e:
@@ -79,41 +104,12 @@ def process_resumes(job_description, resume_files):
 
     return response
 
-def extract_pdf_text(pdf_file):
-    raw = parser.from_buffer(pdf_file)
-    return raw.get('content', '')
-
-def preprocess_text(text):
-    # Preprocessing steps using spaCy for tokenization and stopword removal
-    doc = nlp(text.lower().replace('\n',''))  # Tokenize and lowercase
-    filtered_text = [token.text for token in doc if not token.is_stop and token.is_alpha]
-    return " ".join(filtered_text)
-
-def calculate_similarity(job_description, resume_data):
-    # Extract all texts
-    all_texts = [job_description] + [resume['content'] for resume in resume_data]
-
-    # Initialize TF-IDF vectorizer
-    tfidf_vectorizer = TfidfVectorizer()
-
-    # Fit-transform to get TF-IDF vectors
-    tfidf_vectors = tfidf_vectorizer.fit_transform(all_texts)
-
-    # Calculate cosine similarity between job description and resumes
-    job_description_vector = tfidf_vectors[0]
-    resume_vectors = tfidf_vectors[1:]
-
-    similarities = cosine_similarity(job_description_vector, resume_vectors)
-    scores = similarities.flatten()
-
-    return scores.tolist()
-
 def load_demo_data():
     # Path to demo data
     demo_data_path = os.path.join(settings.BASE_DIR, 'resume_processor', 'static', 'demo-data')
 
     # Load job description
-    with open(os.path.join(demo_data_path, 'job_description.txt'), 'r', encoding='utf-8') as file:
+    with open(os.path.join(demo_data_path, 'job_description.txt'), 'r') as file:
         job_description = file.read()
 
     # Load resumes
