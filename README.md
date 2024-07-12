@@ -13,7 +13,7 @@ The objective of the project is to develop a user-friendly application that allo
 - **File Upload:** HR uploads a folder of resumes with their names as Role-CandidateName in PDF format.
 - **Resume Parsing:** Extraction of key information (work history, education, skills) using NLP and machine learning techniques.
 - **Scoring and Prioritization:** Each resume is assigned a relevance score to aid in prioritization, and renamed as Rank-Role-CandidateName.
-- **Email Notification:** HR receives an email with a link to download a zip file containing ordered resumes.
+- **Download ordered resumes:** HR can download a zip file containing ordered resumes.
 
 **Technologies Used:**
 The application will be developed using Python for backend processing, HTML/CSS for frontend interface, and integrated with Vercel for deployment. Used packages like `django`, `tika`, `textblob` etc. as specified in `requirements.txt`
