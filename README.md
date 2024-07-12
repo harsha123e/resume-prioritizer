@@ -5,7 +5,7 @@
 Recruiters and HR departments often face challenges when sorting through numerous job applications and resumes. The process can be time-consuming and error-prone, potentially leading to qualified candidates being overlooked. To streamline this process, a web-based resume parser application is proposed.
 
 **Objective:**
-The objective of the project is to develop a user-friendly application that allows HR personnel to upload a folder containing resumes in PDF format. The application will parse each resume, extract relevant information such as work history, education, and skills, and categorize the resumes based on the job description specified by the HR. Additionally, the application will assign a relevance score to each resume, aiding in prioritizing candidates. Finally, the parsed resumes will be sorted and renamed for easy reference, and HR will receive an email notification with a downloadable zip file containing the ordered resumes.
+The objective of the project is to develop a user-friendly application that allows HR personnel to upload a folder containing resumes in PDF format. The application will parse each resume, extract relevant information such as work history, education, and skills, and categorize the resumes based on the job description specified by the HR. Additionally, the application will assign a relevance score to each resume, aiding in prioritizing candidates. Finally, the parsed resumes will be sorted and renamed for easy reference, and HR can download the downloadable zip file containing the ordered resumes.
 
 **Key Features:**
 
@@ -13,10 +13,10 @@ The objective of the project is to develop a user-friendly application that allo
 - **File Upload:** HR uploads a folder of resumes with their names as Role-CandidateName in PDF format.
 - **Resume Parsing:** Extraction of key information (work history, education, skills) using NLP and machine learning techniques.
 - **Scoring and Prioritization:** Each resume is assigned a relevance score to aid in prioritization, and renamed as Rank-Role-CandidateName.
-- **Email Notification:** HR receives an email with a link to download a zip file containing ordered resumes.
+- **Download ordered resumes:** HR can download a zip file containing ordered resumes.
 
 **Technologies Used:**
-The application will be developed using Python for backend processing, HTML/CSS for frontend interface, and integrated with Vercel for deployment. Libraries like `pyresparser` will be employed for resume parsing, and SendGrid will handle email notifications securely.
+The application will be developed using Python for backend processing, Django HTML Templates,CSS,JS for frontend interface, and integrated with Vercel for deployment. Libraries like `pyresparser` will be employed for resume parsing, and SendGrid will handle email notifications securely.
 
 **Outcome:**
 The resume parser application aims to significantly reduce manual effort, improve efficiency in candidate evaluation, and enhance HR decision-making by providing a systematic approach to resume screening and prioritization. 
