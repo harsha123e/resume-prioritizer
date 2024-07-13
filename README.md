@@ -47,6 +47,7 @@ cd resume-prioritizer
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
+python manage.py collectstatic --ignore=admin
 python manage.py runserver
 ```
 
@@ -72,6 +73,8 @@ Ctrl + Click on the link provided in CMD/terminal to open the application.
 `venv\Scripts\activate` -> Activate the virtual environment
 
 `pip install -r requirements.txt` -> Install the needed dependencies/packages to run the project
+
+`python manage.py collectstatic --ignore=admin` -> Load all the static files i.e. images, css, js etc ignoring the static files of admin module
 
 `python manage.py runserver` -> Start the Django server to run the project locally
 
