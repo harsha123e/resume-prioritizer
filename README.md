@@ -39,7 +39,7 @@ Python 3 should be installed
 
 The below code will help you run the code in your local computer.
 
-Create a folder and run the following commands in CMD/terminal to run the project locally.
+Create a folder and run the following commands in CMD/terminal to download and run the project locally.
 
 ```
 git clone https://github.com/harsha123e/resume-prioritizer.git
@@ -47,6 +47,15 @@ cd resume-prioritizer
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
+python manage.py runserver
+```
+
+If you want to run the project once it's downloaded
+
+Run the following commands after opening CMD/terminal in resume-prioritizer folder path
+
+```
+venv\Scripts\activate
 python manage.py runserver
 ```
 
