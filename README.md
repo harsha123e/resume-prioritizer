@@ -32,12 +32,14 @@ The resume prioritizer application aims to significantly reduce manual effort, i
 Note: Demo video attached in repository.
 
 **Pre-Requistics**
+
 Python 3 should be installed
 
 **How to run this project locally**
+
 The below code will help you run the code in your local computer.
 
-Create a folder and run the following commands in CMD/terminal to run the project locally.
+Create a folder and run the following commands in CMD/terminal to download and run the project locally.
 
 ```
 git clone https://github.com/harsha123e/resume-prioritizer.git
@@ -48,20 +50,30 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
+If you want to run the project once it's downloaded
+
+Run the following commands after opening CMD/terminal in resume-prioritizer folder path
+
+```
+venv\Scripts\activate
+python manage.py runserver
+```
+
 Ctrl + Click on the link provided in CMD/terminal to open the application.
 
 **Understanding the above commands**
-git clone https://github.com/harsha123e/resume-prioritizer.git -> Create a clone/copy of the project locally
 
-cd resume-prioritizer -> Change to project's directory
+`git clone https://github.com/harsha123e/resume-prioritizer.git` -> Create a clone/copy of the project locally
 
-python -m venv venv -> Create a virtual environment
+`cd resume-prioritizer` -> Change to project's directory
 
-venv\Scripts\activate -> Activate the virtual environment
+`python -m venv venv` -> Create a virtual environment
 
-pip install -r requirements.txt -> Install the needed dependencies/packages to run the project
+`venv\Scripts\activate` -> Activate the virtual environment
 
-python manage.py runserver -> Start the Django server to run the project locally
+`pip install -r requirements.txt` -> Install the needed dependencies/packages to run the project
+
+`python manage.py runserver` -> Start the Django server to run the project locally
 
 **Understanding folder structure**
 ```
